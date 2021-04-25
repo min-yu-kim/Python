@@ -70,25 +70,6 @@ class BankManager:
             print("계좌번호: ",self.accountlist[i].getUserid()," / 이름: ",
                   self.accountlist[i].getUserName()," / 잔액: ",self.accountlist[i].getUserbalance())
 
-    def transfer(self): #이체하기
-        sender = input("본인 계좌를 입력해주세요: ")
-        receiver = input("받을 계좌를 입력해주세요: ")
-        if sender == receiver: 
-            print("계좌가 올바르지 않습니다.")
-        else:
-            money = int(input("이체하실 금액을 입력해주세요: "))
-
-            for i in range(len(self.accountlist)): #받는 계좌에 입금
-                if self.accountlist[i].getUserid() == receiver:
-                   self.accountlist[i].deposit(돈)
-
-            for i in range(len(self.accountlist)): #보내는 계좌에서 출금
-                if self.accountlist[i].getUserid() == sender:
-                    print("계좌번호: ", self.accountlist[i].getUserid(), " / 이름: ", self.accountlist[i].getUserName(), " / 잔액: ", self.accountlist[i].getUserbalance())
-                    self.accountlist[i].withdraw(돈)
-                    print("이체가 완료되었습니다.")
-                    print("계좌번호: ", self.accountlist[i].getUserid(), " / 이름: ", self.accountlist[i].getUserName(), " / 잔액: ", self.accountlist[i].getUserbalance())
-
 class BankingSystem:
         a=BankManager()
         while True:
@@ -104,19 +85,11 @@ class BankingSystem:
                 a.withdraw()             
             elif num=="4":
                 print("===========전체조회=============")             
-                a.showAccount()    
+                a.showAccount()      
             elif num=="5":
-                print("===========이체하기=============")     
-                a.transfer()    
-            elif num=="6":
                 print("============================")
                 print("    프로그램이 종료됩니다   \n")
                 print("============================\n")
                 break
             else:
                 print("잘못 입력하셨습니다")
-
-from Bank import Account
-
-if __name__ == '__main__':
-    BankingSystem()
